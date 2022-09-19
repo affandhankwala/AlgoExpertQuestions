@@ -1,0 +1,35 @@
+/* Write a function that takes in non-empty arrays of distinct integers and an integer representing a target sum. Return a
+*  pair of numbers that add up to the target sum.
+*  Difficulty : EASY
+*/
+
+
+/* My program starts by sorting the input array in ascending order. 
+*  Then, two variables, i and j are assigned to the start and end eleemnt of the array, respectively. 
+*  A while loop is used to compare the sum of the eleemnts at i and j. The while loop terminates when i > j
+*  If the elements equal the target sum, we return them
+*  If the sum is too large, we need to decrease the larger addend (j). Hence j decreases by one
+*  If the sum is too low, we need to increase the smaller addend (i). Hence i is incremented
+*  Keep looping till terminate condition is met or we return the values
+*  If terminating condition is met, we simply return an empty array
+*/
+
+import java.util.*;
+
+class Program {
+  public static int[] twoNumberSum(int[] array, int targetSum) {
+    Arrays.sort(array);
+    int j = array.length - 1;
+    int i = 0;
+    while(i < j){
+      if(array[i] + array[j] == targetSum){
+        return new int [] {array[i], array[j]};
+      }
+      else if(array[i] + array[j] > targetSum){
+        j--;
+      }
+      else i++;
+    }
+    return new int[0];
+  }
+}
